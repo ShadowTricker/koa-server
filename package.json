@@ -1,0 +1,28 @@
+{
+  "name": "koa-server",
+  "version": "1.0.0",
+  "description": "server use koa",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon --watch ./src -e * --exec ts-node ./src/index.ts",
+    "watch:js": "nodemon --watch ./build -e * --exec node ./build/index.js",
+    "build": "tsc && npm run copy",
+    "copy": "cpx \"src/assets/**/*\" build/assets"
+  },
+  "author": "shadow",
+  "license": "ISC",
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2"
+  },
+  "dependencies": {
+    "@types/koa": "^2.11.0",
+    "@types/koa-router": "^7.4.0",
+    "@types/node": "^13.1.8",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "rxjs": "^6.5.4",
+    "typescript": "^3.7.5"
+  }
+}
