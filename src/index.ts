@@ -1,12 +1,14 @@
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
 
-import dataListRoute from './routes/data-list';
+import articleListRoute from './routes/articles';
+import commentListRoute from './routes/comments';
 
 const app = new Koa();
 const router = new Router();
 
-router.use('/data-list', dataListRoute);
+router.use('/article-list', articleListRoute);
+router.use('/comment-list', commentListRoute);
 
 app.use(router.routes());
 

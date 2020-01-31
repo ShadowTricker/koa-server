@@ -1,0 +1,20 @@
+[
+    {
+        "articleId": 1,
+        "comments": [
+            {
+                "author": "shadow-tricker",
+                "comment": "这是一个评论"
+            }
+        ]
+    },
+    {
+        "articleId": 2,
+        "comments": [
+            {
+                "author": "shadow-tricker",
+                "comment": "这是一个评论"
+            }
+        ]
+    }
+]
