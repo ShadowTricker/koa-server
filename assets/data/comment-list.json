@@ -4,7 +4,8 @@
         "comments": [
             {
                 "author": "shadow-tricker",
-                "comment": "这是一个评论"
+                "comment": "这是一个评论",
+                "updateTime": "2020-02-10"
             }
         ]
     },
@@ -13,7 +14,8 @@
         "comments": [
             {
                 "author": "shadow-tricker",
-                "comment": "这是一个评论"
+                "comment": "这是一个评论",
+                "updateTime": "2020-02-10"
             }
         ]
     }

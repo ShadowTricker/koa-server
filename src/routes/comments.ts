@@ -2,14 +2,22 @@ import * as Router from 'koa-router';
 
 import readFile from '../lib/read-file';
 
+interface CommentItem {
+    articleId: number,
+    comments: Comment[]
+}
+
 const router = new Router();
 
-router.get('/', async ctx => {
-    const commentList = await readFile('./assets/data/comment-list.json');
+router.post('/', async ctx => {
+    const commentListBuffer = await readFile('./assets/data/comment-list.json');
+    const commentList = JSON.parse(commentListBuffer.toString());
+    const { articleId } = ctx.request.body;
+    const filtedCommentList = commentList.find((item: CommentItem) => item.articleId === +articleId).comments;
 
     ctx.body = {
         status: 'SUCCESS',
-        data: JSON.parse(commentList.toString()),
+        data: filtedCommentList,
         error: null
     };
 });
