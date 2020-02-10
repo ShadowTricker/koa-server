@@ -11,7 +11,6 @@ router.get('/', async (ctx) => {
         data: JSON.parse(articleList.toString()),
         error: null
     };
-    console.log('complete');
 });
 
 export default router.routes();

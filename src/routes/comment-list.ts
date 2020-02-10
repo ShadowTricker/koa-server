@@ -1,11 +1,7 @@
 import * as Router from 'koa-router';
 
 import readFile from '../lib/read-file';
-
-interface CommentItem {
-    articleId: number,
-    comments: Comment[]
-}
+import { CommentItem } from '../models/comment-data.model';
 
 const router = new Router();
 
