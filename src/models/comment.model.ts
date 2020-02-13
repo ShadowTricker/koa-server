@@ -1,5 +1,5 @@
 export interface Comment {
     author: String;
-    content: String;
+    comment: String;
     updateTime: String;
 }

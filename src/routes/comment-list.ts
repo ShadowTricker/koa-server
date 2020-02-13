@@ -11,6 +11,7 @@ router.post('/', async ctx => {
     const { articleId } = ctx.request.body;
     const filtedCommentList = commentList.find((item: CommentItem) => item.articleId === +articleId).comments;
 
+    console.log('get comments list');
     ctx.body = {
         status: 'SUCCESS',
         data: filtedCommentList,

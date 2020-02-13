@@ -2,6 +2,7 @@ import * as Router from 'koa-router';
 
 import readFile from '../lib/read-file';
 import writeFile from '../lib/write-file';
+import { CommentItem } from '../models/comment-data.model';
 
 const router = new Router();
 
@@ -24,11 +25,27 @@ router.post('/add', async (ctx) => {
         content,
     });
 
-    const writeStatus: any = await writeFile(
+    const writeArticlesStatus = await writeFile(
         './assets/data/article-list.json',
         JSON.stringify(articleList)
     );
-    if (writeStatus.status === 'SUCCESS') {
+
+    const commentsBuffer = await readFile('./assets/data/comment-list.json');
+    const commentsData: CommentItem[] = JSON.parse(commentsBuffer.toString());
+    commentsData.push({
+        articleId: articleList.length,
+        comments: []
+    });
+    const writeCommentStatus = await writeFile(
+        './assets/data/comment-list.json',
+        JSON.stringify(commentsData)
+    );
+
+    if (
+        (writeArticlesStatus as any).status === 'SUCCESS'
+        && (writeCommentStatus as any).status === 'SUCCESS'
+    ) {
+        console.log('add article');
         ctx.body = {
             status: 'SUCCESS',
             data: null,

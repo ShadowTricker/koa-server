@@ -21,11 +21,13 @@ router.post('/add', async (ctx) => {
         month: nowDate.getMonth() + 1 < 10 ? `0${ nowDate.getMonth() + 1 }`: nowDate.getMonth() + 1,
         date: nowDate.getDate() < 10 ? `0${ nowDate.getDate() }` : nowDate.getDate(),
     };
+
     commentsData[commentIndex].comments.push({
         updateTime: `${ updateTime.year }-${ updateTime.month }-${ updateTime.date }`,
+        comment: content,
         author,
-        content,
     });
+    
 
     const writeCommentStatus = await writeFile(
         './assets/data/comment-list.json',
@@ -37,6 +39,7 @@ router.post('/add', async (ctx) => {
     const articleList: Article[] = JSON.parse(articlesBuffer.toString());
     const articleIndex = articleList.findIndex((item: Article) => item.articleId === +articleId);
     articleList[articleIndex].commentsLength = commentsData[commentIndex].comments.length;
+    
 
     const writeArticlesStatus = await writeFile(
         './assets/data/article-list.json',
@@ -47,6 +50,7 @@ router.post('/add', async (ctx) => {
         (writeCommentStatus as any).status === 'SUCCESS'
         && (writeArticlesStatus as any).status === 'SUCCESS'
     ) {
+        console.log('add comment');
         ctx.body = {
             status: 'SUCCESS',
             data: null,
