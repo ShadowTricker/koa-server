@@ -4,7 +4,8 @@
   "description": "server use koa",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon --watch ./src -e * --exec ts-node ./src/index.ts",
+    "start": "nodemon -w './src' -e '*' -x 'ts-node' ./src/index.ts",
+    "start2": "ts-node ./src/index.ts",
     "watch:js": "nodemon --watch ./build -e * --exec node ./build/index.js",
     "build": "tsc && npm run copy",
     "copy": "cpx \"src/assets/**/*\" build/assets"
